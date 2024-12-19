@@ -1,16 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="il.cshaifasweng.OCSFMediatorExample.client.PrimaryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="il.cshaifasweng.OCSFMediatorExample.client.PrimaryController">
    <children>
-      <Label text="Welcome" />
-      <Button mnemonicParsing="false" onAction="#sendWarning" text="Send me a warning!" />
+      <Button fx:id="button2" layoutX="150.0" layoutY="150.0" mnemonicParsing="false" onAction="#setupButton" prefHeight="150.0" prefWidth="150.0">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Button>
+      <Button fx:id="button3" layoutX="300.0" layoutY="150.0" mnemonicParsing="false" onAction="#setupButton" prefHeight="150.0" prefWidth="150.0">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Button>
+      <Button fx:id="button6" layoutX="300.0" layoutY="300.0" mnemonicParsing="false" onAction="#setupButton" prefHeight="150.0" prefWidth="150.0">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Button>
+      <Button fx:id="button8" layoutX="150.0" layoutY="450.0" mnemonicParsing="false" onAction="#setupButton" prefHeight="150.0" prefWidth="150.0">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Button>
+      <Button fx:id="button5" layoutX="150.0" layoutY="300.0" mnemonicParsing="false" onAction="#setupButton" prefHeight="150.0" prefWidth="150.0">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Button>
+      <Button fx:id="button9" layoutX="300.0" layoutY="450.0" mnemonicParsing="false" onAction="#setupButton" prefHeight="150.0" prefWidth="150.0">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Button>
+      <Button fx:id="button4" layoutY="300.0" mnemonicParsing="false" onAction="#setupButton" prefHeight="150.0" prefWidth="150.0">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Button>
+      <Button fx:id="button7" layoutY="450.0" mnemonicParsing="false" onAction="#setupButton" prefHeight="150.0" prefWidth="150.0">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Button>
+      <Button fx:id="button1" layoutY="150.0" mnemonicParsing="false" onAction="#setupButton" prefHeight="150.0" prefWidth="150.0">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Button>
+      <Text fx:id="winnerText" layoutX="115.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Waiting for players..." textAlignment="CENTER" wrappingWidth="220.0">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
    </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+</AnchorPane>

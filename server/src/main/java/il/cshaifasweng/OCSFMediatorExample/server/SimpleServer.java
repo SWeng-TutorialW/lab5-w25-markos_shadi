@@ -1,20 +1,30 @@
 package il.cshaifasweng.OCSFMediatorExample.server;
 
+
+import il.cshaifasweng.OCSFMediatorExample.entities.Start;
+import il.cshaifasweng.OCSFMediatorExample.entities.Update;
 import il.cshaifasweng.OCSFMediatorExample.server.ocsf.AbstractServer;
 import il.cshaifasweng.OCSFMediatorExample.server.ocsf.ConnectionToClient;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import il.cshaifasweng.OCSFMediatorExample.entities.Warning;
+
 import il.cshaifasweng.OCSFMediatorExample.server.ocsf.SubscribedClient;
+
+
 
 public class SimpleServer extends AbstractServer {
 	private static ArrayList<SubscribedClient> SubscribersList = new ArrayList<>();
+	int[] idCounter = {0,1}; // Counter for unique IDs
+	String[] roles = {"X", "O"};
+
 
 	public SimpleServer(int port) {
 		super(port);
-		
+
 	}
 
 	@Override
@@ -37,6 +47,24 @@ public class SimpleServer extends AbstractServer {
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
+			if (SubscribersList.size() == 2){
+				Random random = new Random();
+				int randomRoleIndex = random.nextInt(2);
+				int randomIdIndex = random.nextInt(2);// Use the instance of Random
+				String firstRole = roles[randomRoleIndex];
+				String secondRole = roles[1 - randomRoleIndex];
+				int firstId = idCounter[randomIdIndex];
+				int secondId = idCounter[1 - randomIdIndex];
+				Start start1 = new Start(firstId, firstRole);
+				Start start2 = new Start(secondId, secondRole);
+				try {
+					SubscribersList.get(0).getClient().sendToClient(start1);
+					SubscribersList.get(1).getClient().sendToClient(start2);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				//sendToAllClients("start");
+            }
 		}
 		else if(msgString.startsWith("remove client")){
 			if(!SubscribersList.isEmpty()){
@@ -48,6 +76,10 @@ public class SimpleServer extends AbstractServer {
 				}
 			}
 		}
+		else if(msg.getClass() == Update.class){
+			sendToAllClients(msg);
+		}
+
 	}
 	public void sendToAllClients(String message) {
 		try {
