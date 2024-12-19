@@ -19,9 +19,9 @@ public class InitController {
 
 
     public void connect() {
-        client = SimpleClient.getClient();
         SimpleClient.ip = ip.getText();
         SimpleClient.port = Integer.parseInt(port.getText());
+        client = SimpleClient.getClient();
         try {
             client.openConnection();
        }catch (IOException e){
