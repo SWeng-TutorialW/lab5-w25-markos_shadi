@@ -25,18 +25,24 @@ public class InitController {
         try {
             client.openConnection();
        }catch (IOException e){
-            throw new RuntimeException(e);
+            System.out.println("Connection failed, Enter correct ip and port");
+            client = null;
+            return;
         }
+
         try {
             App.setRoot("primary");
         }catch (IOException e){
-            throw new RuntimeException(e);
+            System.out.println("Switching failed");
+            return;
         }
         try {
             SimpleClient.getClient().sendToServer("add client");
         }catch (IOException e){
-            throw new RuntimeException(e);
+            System.out.println("Adding client failed");
+            return;
         }
+
     }
 
 }
