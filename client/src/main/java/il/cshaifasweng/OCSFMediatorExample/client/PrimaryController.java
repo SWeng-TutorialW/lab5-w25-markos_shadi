@@ -149,17 +149,20 @@ public class PrimaryController{
 			if (line.equals("XXX")) {
 				winnerText.setText("X won!");
 				GameEnded();
+				return;
 			}
 
 			//O winner
 			else if (line.equals("OOO")) {
 				winnerText.setText("O won!");
 				GameEnded();
+				return;
 			}
-			else if (playerTurn == 9){
-				winnerText.setText("Draw");
-				GameEnded();
-			}
+
+		}
+		if (playerTurn == 9){
+			winnerText.setText("Draw");
+			GameEnded();
 		}
 	}
 	public void cleanup() {
